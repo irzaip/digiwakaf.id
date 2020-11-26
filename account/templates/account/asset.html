@@ -1,0 +1,25 @@
+{% extends 'account/main.html' %}
+{% load static %}
+
+{% block content %}
+
+   <h1>PRODUCTS</h1>
+   <div class="alert alert-primary" role="alert">
+      A simple primary alert—check it out!
+    </div>
+    <div class="row row-cols-1 row-cols-md-2">
+    {% for i in products %}
+    <div class="col mb-4">
+    <div class="card" style="width: 18rem;">
+      
+      <div class="card-body">
+        <h5 class="card-title">{{i.name}}</h5>
+        <p class="card-text">{{i.description}}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+    </div>
+    {% endfor %}
+    </div>
+  </div>
+{% endblock %}
