@@ -1,0 +1,22 @@
+{% extends 'account/main.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <h1>LISTING ASET</h1>
+        <div class="row row-cols-1 row-cols-md-2">
+            <ul class="list">
+                {% for i in assets %}
+                    <li class="media border">
+                    <img src="/images/{{ i.gambar }}" class="mr-3" alt="..." width="100" height="100">
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1">{{ i.judul }}</h5>
+                        {{ i.description }}
+                    </div>
+                    <a href="{% url 'lookupAsset' i.id %}"><button class="btn btn-primary">Lihat</button></a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}

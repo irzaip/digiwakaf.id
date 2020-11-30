@@ -2,24 +2,63 @@
 {% load static %}
 
 {% block content %}
-
-   <h1>PRODUCTS</h1>
-   <div class="alert alert-primary" role="alert">
-      A simple primary alert—check it out!
-    </div>
-    <div class="row row-cols-1 row-cols-md-2">
-    {% for i in products %}
-    <div class="col mb-4">
-    <div class="card" style="width: 18rem;">
-      
+  <div class="container">
+    
+    <div class="card" style="margin-top: 30px;">
+      <h5 class="card-header">Asset</h5>
       <div class="card-body">
-        <h5 class="card-title">{{i.name}}</h5>
-        <p class="card-text">{{i.description}}</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="row">
+          <div class="col-md-4">
+            <img src="/images/{{ asset.gambar }}" class="card-img" alt="Thumbnail" width="300" height="300">
+          </div>
+          <div class="col-md-8">
+              <h3 class="card-title">{{ asset.judul }}</h3>
+              <p class="card-text">{{ asset.keterangan }}</p>
+              <p class="card-text">Kategori : {{ asset.kategori }}</p>
+              <p class="card-text">{{ asset.description }}</p>
+              {% if asset.downloadable %}
+              <a href="#" class="btn btn-primary">Unduh</a>
+              {% endif %}
+          </div>
+
+        </div>
+
       </div>
     </div>
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">INFO</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Bonus</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Review</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="jumbotron">
+          {{ asset.keterangan }}
+        </div>
+      </div>
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="jumbotron">
+          {{ asset.bonus }}
+        </div>
+      </div>
+      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+        <div class="jumbotron">
+          {{ asset.review }}
+        </div>
+      </div>
     </div>
-    {% endfor %}
+
     </div>
+
+
+
   </div>
+  
 {% endblock %}

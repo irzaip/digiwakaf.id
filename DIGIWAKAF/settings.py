@@ -25,7 +25,7 @@ SECRET_KEY = '!20$3pf252rvecib-9n4^-q-(pzl7ufjxku7%-$@=oae%j92+w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.30.50', '127.0.0.1', '[::1]', 'b5fd8ce9e6d8.ngrok.io']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'account',
 ]
 

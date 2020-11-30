@@ -13,6 +13,7 @@ from .forms import *
 from .filter import *
 from .decorators import *
 
+
 # Create your views here.
 def registerPage(request):
     form = CreateUserForm()
@@ -36,7 +37,13 @@ def registerPage(request):
             return HttpResponse("Error creating new user -> check user and password requirements")
 
     context = {'form': form}
-    return render(request, 'accounts/register.html', context)
+    return render(request, 'account/register.html', context)
+
+@login_required(login_url='login')
+def enterassetPage(request):
+    form = AssetForm()
+    context = {'form': form}
+    return render(request, 'account/asset_entry.html', context)
 
 @authdUser
 def loginPage(request):
@@ -56,7 +63,7 @@ def loginPage(request):
 
     
     context = {}
-    return render(request, 'accounts/login.html', context)
+    return render(request, 'account/login.html', context)
 
 def logoutPage(request):
     logout(request)
@@ -74,11 +81,25 @@ def assetPage(request, pid):
     context = {'product': product}
     return render(request, 'account/products.html', context)
 
-def lookupassetPage(request, pid):
-    product = Asset.objects.get(id=pid)
-    context = {'product': product}
-    return render(request, 'account/products.html', context)
+def lookupassetPage(request, sid):
+    asset = Asset.objects.get(id=sid)
+    context = {'asset': asset}
+    return render(request, 'account/asset.html', context)
 
 def customer(request):
     context = {}
     return render(request, 'account/customer.html', context)
+
+def listingAssetPage(request):
+    assets = Asset.objects.all()
+    context = {'assets': assets}
+    return render(request, 'account/listing.html', context)
+
+def carakerja(request):
+    context = {}
+    return render(request, 'account/carakerja.html', context)
+
+def feature(request):
+    context = {}
+    return render(request, 'account/feature.html', context)
+

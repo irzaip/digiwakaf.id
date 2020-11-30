@@ -16,11 +16,21 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Beranda <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="{% url 'home' %}">Beranda <span class="sr-only">(current)</span></a>
         </li>
+
+        {% if request.user.is_authenticated %}
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login<span class="sr-only">(current)</span></a>
+        </li>
+        {% endif %}
+        
+
+        {% if request.user.is_superuser %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Menu
+           Admin Menu
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{% url 'register' %}">Register</a>
@@ -32,10 +42,12 @@
             <a class="dropdown-item" href="/admin/">Admin</a>
           </div>
         </li>
+        {% endif %}
+
       </ul>
 
-      <span class="idlogged">Assalamualaikum, {{request.user}}</span>
       {% if request.user.is_authenticated  %}
+      <span class="idlogged">Assalamualaikum, {{request.user}}</span>
       <span class="idlogged"><a href="{% url 'logout' %}">LOGOUT</a></span>
       {% endif %}
 

@@ -9,7 +9,7 @@ class Customer(models.Model):
     kota = models.CharField(max_length=200)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
  
-    def __str__(Customer):
+    def __str__(self):
       return self.user.first_name + "(" + str(self.user.email) + ")"
 
 class Tag(models.Model):
@@ -43,7 +43,7 @@ class Asset(models.Model):
     )
 
     judul = models.CharField(max_length=200)
-    gambar = models.ImageField(width_field=600, height_field=600, null=True, blank=True)
+    gambar = models.ImageField()
     description = models.TextField(null=True)
     opsi_wakaf = models.CharField(max_length=100, choices=OPSI)
     keterangan = models.TextField()
@@ -56,9 +56,11 @@ class Asset(models.Model):
 
     featured = models.BooleanField(default=False)
     frontpage = models.BooleanField(default=False)
+    downloadable = models.BooleanField(default=False)
     review = models.TextField(null=True)
     status = models.CharField(max_length=20, choices=STATUS, default='proposal')
-    
+    date_created = models.DateTimeField(auto_now_add=True, null=True)    
+
     def __str__(self):
       return str(self.judul) 
 
