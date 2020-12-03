@@ -23,9 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '!20$3pf252rvecib-9n4^-q-(pzl7ufjxku7%-$@=oae%j92+w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['192.168.30.50', '127.0.0.1', '[::1]', 'b5fd8ce9e6d8.ngrok.io']
+ALLOWED_HOSTS = [
+    '192.168.30.50', 
+    '127.0.0.1', 
+    '[::1]', 
+    'b5fd8ce9e6d8.ngrok.io',
+    'digiwakaf.trampill.com',
+]
 
 
 # Application definition
@@ -123,6 +129,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/home/trampil/digiwakaf.trampill.com/static/'
  
 STATICFILES_DIRS = [
   os.path.join(BASE_DIR, 'static')
